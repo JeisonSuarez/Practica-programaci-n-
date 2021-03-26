@@ -42,9 +42,10 @@ public class PnlViewVehicles extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cmbSelectSeach = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
         btnBusqueda = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -52,6 +53,12 @@ public class PnlViewVehicles extends javax.swing.JPanel {
         tblTabla = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setText("Search by:");
+        jPanel1.add(jLabel1);
+
+        cmbSelectSeach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel1.add(cmbSelectSeach);
 
         txtBusqueda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBusqueda.setPreferredSize(new java.awt.Dimension(170, 24));
@@ -85,6 +92,8 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBusqueda;
+    private javax.swing.JComboBox<String> cmbSelectSeach;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
