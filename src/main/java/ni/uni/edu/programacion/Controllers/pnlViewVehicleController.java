@@ -34,6 +34,7 @@ public class pnlViewVehicleController {
     private TableRowSorter tbr;
         public DefaultComboBoxModel <String> cmbBusquedaModel;
     private final String TIPOBUSQUEDA[]=new String[] {"Year","Make", "Model","Style","VIN"};
+    int columna=0;
     
     public pnlViewVehicleController(PnlViewVehicles pnlViewVehicle) throws IOException {
         this.pnlViewVehicle = pnlViewVehicle;
@@ -52,18 +53,7 @@ public class pnlViewVehicleController {
          });
          //QUITA ESTOS COMENTARIOS DEL INIT COMPONENT Y MIRA , QUE LOS DATOS DE LA TABLA DESAPARECEN, DESPUES PONELOS Y APARECERAN TODOS LOS DATOS
          //añadir keylistener al txt de busqueda
-         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
-            
-            @Override
-            public void keyReleased(final KeyEvent e) {
-             String cadena=pnlViewVehicle.getTxtBusqueda().getText();
-             pnlViewVehicle.getTxtBusqueda().setText(cadena);
-                filtro();
-            }
-        });
-         
-        tbr= new  TableRowSorter(pnlViewVehicle.getTblTabla().getModel());
-        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
+       
          
         
      }
@@ -127,22 +117,51 @@ public class pnlViewVehicleController {
            
         JOptionPane.showMessageDialog(null, "If the field is empty, all vehicle type objects are shown.",
                 "Information message", JOptionPane.INFORMATION_MESSAGE);
-        
-       }else{
-              if (txtContent.equals(txtContent.trim() )) {
-                  JOptionPane.showMessageDialog(null, "Son Numeros los que ingreso.",
-                "Information message", JOptionPane.INFORMATION_MESSAGE);
-                  
-                  
-              }
-          }
+         }
+             String cadena=pnlViewVehicle.getTxtBusqueda().getText();
+                filtro();
+          tbr= new  TableRowSorter(pnlViewVehicle.getTblTabla().getModel());
+        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
+//       else{
+//              if (txtContent.equals(txtContent.trim() )) {
+//                  JOptionPane.showMessageDialog(null, "Son Numeros los que ingreso.",
+//                "Information message", JOptionPane.INFORMATION_MESSAGE);
+//                  
+//                  
+//              }
+         
          
         
      }
     private void filtro(){
+       
      int indexBusqueda= pnlViewVehicle.getCmbBusqueda().getSelectedIndex();  //el numero es igual al index que este seleccionado en cmb de busqueda.
-              
-     tbr.setRowFilter(RowFilter.regexFilter(pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda)); //aqui se va a filtrar por lo que este escrito en  txt de busqueda , y la columna que sera el index seleccionado
+              switch(indexBusqueda){
+                  case 0:
+                      //indexBsuqeda marca year
+                      columna=1;
+                      return;
+                      
+                  case 1:
+                     //indexBsuqeda marca Make
+                      columna=2;
+                      return;
+                  case 2:
+                      //indexBsuqeda marca Model
+                      columna=3;
+                      return;
+                  case 3:
+                      //indexBsuqeda marca Style
+                      columna=4;
+                      return;
+                    case 4:
+                      //indexBsuqeda marca VIN
+                        columna=5;
+                        return;
+                          
+              }
+     tbr.setRowFilter(RowFilter.regexFilter(pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda));  //aqui se va a filtrar por lo que este escrito en  txt de busqueda , y la columna que sera el index seleccionado
+   
 }
 //    private void TxrBusquedaKeyTyped(KeyEvent evt){
 //         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
