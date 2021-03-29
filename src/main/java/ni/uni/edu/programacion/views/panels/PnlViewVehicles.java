@@ -6,6 +6,7 @@
 package ni.uni.edu.programacion.views.panels;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -17,6 +18,9 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
     public JButton getBtnBusqueda() {
         return btnBusqueda;
+    }
+     public JComboBox<String> getCmbBusqueda() {
+        return cmbBusqueda;
     }
 
     public JTable getTblTabla() {
@@ -44,17 +48,17 @@ public class PnlViewVehicles extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        cmbBusqueda = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
         btnBusqueda = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTabla = new javax.swing.JTable();
+        jScrollBar1 = new javax.swing.JScrollBar();
 
         setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("Search by:");
-        jPanel1.add(jLabel1);
+        jPanel1.add(cmbBusqueda);
 
         txtBusqueda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBusqueda.setPreferredSize(new java.awt.Dimension(170, 24));
@@ -86,6 +90,7 @@ public class PnlViewVehicles extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tblTabla);
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+        jPanel2.add(jScrollBar1, java.awt.BorderLayout.LINE_END);
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -93,9 +98,10 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBusqueda;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cmbBusqueda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblTabla;
     private javax.swing.JTextField txtBusqueda;

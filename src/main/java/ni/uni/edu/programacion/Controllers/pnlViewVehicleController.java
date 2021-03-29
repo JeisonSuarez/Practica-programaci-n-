@@ -6,12 +6,15 @@
 package ni.uni.edu.programacion.Controllers;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import javax.swing.DefaultButtonModel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
@@ -29,6 +32,9 @@ public class pnlViewVehicleController {
     private List<VehicleSubModel> vehicleSubModels;
     private DefaultButtonModel btnBusqueda;
     private TableRowSorter tbr;
+        public DefaultComboBoxModel <String> cmbBusquedaModel;
+    //Palabras que van hacia el comboBox
+    private final String TIPOBUSQUEDA[]=new String[] {"Year","Make", "Model","Style","VIN"};
     
     public pnlViewVehicleController(PnlViewVehicles pnlViewVehicle) throws IOException {
         this.pnlViewVehicle = pnlViewVehicle;
@@ -37,10 +43,28 @@ public class pnlViewVehicleController {
     }
     
     private void initComponent(){
-       
+       cmbBusquedaModel= new DefaultComboBoxModel<>(TIPOBUSQUEDA);
+        pnlViewVehicle.getCmbBusqueda().setModel(cmbBusquedaModel);
+        
+        
          pnlViewVehicle.getBtnBusqueda().addActionListener((e) -> {
              btnBusquedaActionListener(e);
+          
          });
+         //QUITA ESTOS COMENTARIOS DEL INIT COMPONENT Y MIRA , QUE LOS DATOS DE LA TABLA DESAPARECEN, DESPUES PONELOS Y APARECERAN TODOS LOS DATOS
+         //añadir keylistener al txt de busqueda
+//         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
+//            
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//                int indexBusqueda= pnlViewVehicle.getCmbBusqueda().getSelectedIndex();//el numero es igual al index que este seleccionado en cmb de busqueda.
+//                tbr.setRowFilter(RowFilter.regexFilter("(?i)"+pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda));//aqui se va a filtrar por lo que este escrito en  txt de busqueda , y la columna que sera el index seleccionado
+//            }
+//        });
+//        tbr= new  TableRowSorter();
+//        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
+         
+        
      }
      
       private void initComponetTable () throws FileNotFoundException, IOException{
@@ -115,7 +139,16 @@ public class pnlViewVehicleController {
         
      }
     
-    private void TxrBusquedaKeyTyped(KeyEvent evt){
-        
-    }
+//    private void TxrBusquedaKeyTyped(KeyEvent evt){
+//         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
+//            
+//            @Override
+//            public void keyReleased(KeyEvent e) {
+//                int indexBusqueda= pnlViewVehicle.getCmbBusqueda().getSelectedIndex();
+//                tbr.setRowFilter(RowFilter.regexFilter("(?i)"+pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda));
+//            }
+//        });
+//        tbr= new  TableRowSorter();
+//        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
+//    }
 }
