@@ -45,7 +45,6 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cmbSelectSeach = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
         btnBusqueda = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -57,31 +56,33 @@ public class PnlViewVehicles extends javax.swing.JPanel {
         jLabel1.setText("Search by:");
         jPanel1.add(jLabel1);
 
-        cmbSelectSeach.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel1.add(cmbSelectSeach);
-
         txtBusqueda.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtBusqueda.setPreferredSize(new java.awt.Dimension(170, 24));
         jPanel1.add(txtBusqueda);
 
-        btnBusqueda.setText("Buscar");
+        btnBusqueda.setText("Search");
         jPanel1.add(btnBusqueda);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel2.setLayout(new java.awt.BorderLayout());
 
+        tblTabla.setBackground(new java.awt.Color(51, 255, 255));
+        tblTabla.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tblTabla.setFont(new java.awt.Font("Consolas", 1, 11)); // NOI18N
         tblTabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Stock Number", "Year", "Make", "Model", "Style", " VIN", "Exterior Color", "Interior Color", "Miles", "Price", "Transmission", "Engine", "Status", "Image"
             }
         ));
+        tblTabla.setGridColor(new java.awt.Color(0, 0, 255));
+        tblTabla.setSelectionForeground(new java.awt.Color(204, 204, 204));
         jScrollPane2.setViewportView(tblTabla);
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -92,7 +93,6 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBusqueda;
-    private javax.swing.JComboBox<String> cmbSelectSeach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

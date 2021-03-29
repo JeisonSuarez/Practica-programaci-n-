@@ -36,7 +36,7 @@ public class VehicleMain {
             for(Vehicle v : vehicles){
                 System.out.println(v.toString());
             }
-            
+            System.out.println(vehicles.size());
         } catch (FileNotFoundException ex) {
             Logger.getLogger(VehicleMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
