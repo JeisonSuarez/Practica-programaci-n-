@@ -33,7 +33,6 @@ public class pnlViewVehicleController {
     private DefaultButtonModel btnBusqueda;
     private TableRowSorter tbr;
         public DefaultComboBoxModel <String> cmbBusquedaModel;
-    //Palabras que van hacia el comboBox
     private final String TIPOBUSQUEDA[]=new String[] {"Year","Make", "Model","Style","VIN"};
     
     public pnlViewVehicleController(PnlViewVehicles pnlViewVehicle) throws IOException {
@@ -53,16 +52,18 @@ public class pnlViewVehicleController {
          });
          //QUITA ESTOS COMENTARIOS DEL INIT COMPONENT Y MIRA , QUE LOS DATOS DE LA TABLA DESAPARECEN, DESPUES PONELOS Y APARECERAN TODOS LOS DATOS
          //añadir keylistener al txt de busqueda
-//         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
-//            
-//            @Override
-//            public void keyReleased(KeyEvent e) {
-//                int indexBusqueda= pnlViewVehicle.getCmbBusqueda().getSelectedIndex();//el numero es igual al index que este seleccionado en cmb de busqueda.
-//                tbr.setRowFilter(RowFilter.regexFilter("(?i)"+pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda));//aqui se va a filtrar por lo que este escrito en  txt de busqueda , y la columna que sera el index seleccionado
-//            }
-//        });
-//        tbr= new  TableRowSorter();
-//        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
+         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
+            
+            @Override
+            public void keyReleased(final KeyEvent e) {
+             String cadena=pnlViewVehicle.getTxtBusqueda().getText();
+             pnlViewVehicle.getTxtBusqueda().setText(cadena);
+                filtro();
+            }
+        });
+         
+        tbr= new  TableRowSorter(pnlViewVehicle.getTblTabla().getModel());
+        pnlViewVehicle.getTblTabla().setRowSorter(tbr);
          
         
      }
@@ -138,7 +139,11 @@ public class pnlViewVehicleController {
          
         
      }
-    
+    private void filtro(){
+     int indexBusqueda= pnlViewVehicle.getCmbBusqueda().getSelectedIndex();  //el numero es igual al index que este seleccionado en cmb de busqueda.
+              
+     tbr.setRowFilter(RowFilter.regexFilter(pnlViewVehicle.getTxtBusqueda().getText(), indexBusqueda)); //aqui se va a filtrar por lo que este escrito en  txt de busqueda , y la columna que sera el index seleccionado
+}
 //    private void TxrBusquedaKeyTyped(KeyEvent evt){
 //         pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
 //            
