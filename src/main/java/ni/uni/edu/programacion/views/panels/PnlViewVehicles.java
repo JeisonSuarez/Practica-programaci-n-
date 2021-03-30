@@ -51,6 +51,7 @@ public class PnlViewVehicles extends javax.swing.JPanel {
         cmbBusqueda = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
         btnBusqueda = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTabla = new javax.swing.JTable();
@@ -65,6 +66,9 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
         btnBusqueda.setText("Search");
         jPanel1.add(btnBusqueda);
+
+        jLabel1.setText("Presionar enter para filtrar");
+        jPanel1.add(jLabel1);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -154,6 +158,7 @@ public class PnlViewVehicles extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBusqueda;
     private javax.swing.JComboBox<String> cmbBusqueda;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
