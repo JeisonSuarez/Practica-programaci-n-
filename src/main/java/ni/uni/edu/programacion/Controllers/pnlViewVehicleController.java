@@ -35,6 +35,7 @@ public class pnlViewVehicleController {
     public DefaultComboBoxModel <String> cmbBusquedaModel;
     private final String TIPOBUSQUEDA[]=new String[] {"Stock Number","Year", "Make","Model","Style"};
     int columna=0;
+   
     
     public pnlViewVehicleController(PnlViewVehicles pnlViewVehicle) throws IOException {
         this.pnlViewVehicle = pnlViewVehicle;
@@ -47,10 +48,13 @@ public class pnlViewVehicleController {
         pnlViewVehicle.getCmbBusqueda().setModel(cmbBusquedaModel);
         
         
-         pnlViewVehicle.getBtnBusqueda().addActionListener((e) -> {
+         pnlViewVehicle.getTxtBusqueda().addActionListener((e) -> {
              btnBusquedaActionListener(e);
           
          });
+         
+         
+         
          
          
         
@@ -103,6 +107,7 @@ public class pnlViewVehicleController {
 //              
 
           }
+          
       }
        
     
@@ -112,18 +117,14 @@ public class pnlViewVehicleController {
     private void btnBusquedaActionListener(ActionEvent e){
          String txtContent;
          txtContent= pnlViewVehicle.getTxtBusqueda().getText();
+         pnlViewVehicle.repaint();
           if (txtContent.equals("")){
            
         JOptionPane.showMessageDialog(null, "If the field is empty, all vehicle type objects are shown.",
                 "Information message", JOptionPane.INFORMATION_MESSAGE);
+        
          }else{
-              
-                 
-             TxtBusquedaKeyTyped();
-             tbr= new  TableRowSorter(pnlViewVehicle.getTblTabla().getModel());
-             pnlViewVehicle.getTblTabla().setRowSorter(tbr);
-             
-               
+            TxtBusquedaKeyTyped();
           }
             
 
@@ -164,6 +165,7 @@ public class pnlViewVehicleController {
 }
     private void TxtBusquedaKeyTyped(){
          pnlViewVehicle.getTxtBusqueda().addKeyListener(new KeyAdapter(){ 
+             
             
             @Override
             public void keyReleased(KeyEvent e) {
@@ -173,8 +175,8 @@ public class pnlViewVehicleController {
             }
         });
          
-         
-        tbr= new  TableRowSorter();
+        
+         tbr= new  TableRowSorter(pnlViewVehicle.getTblTabla().getModel());
         pnlViewVehicle.getTblTabla().setRowSorter(tbr);
     }
 }

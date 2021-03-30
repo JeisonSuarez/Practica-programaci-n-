@@ -63,11 +63,7 @@ public class PnlVehicleController {
         initComponent();
     }
 
-//      public PnlVehicleController(PnlViewVehicles pnlViewVehicles ) throws FileNotFoundException {
-//        
-//        this.pnlViewVehicle=pnlViewVehicle;
-//        initComponent();
-//    }
+
     
 
     private void initComponent() throws FileNotFoundException {
