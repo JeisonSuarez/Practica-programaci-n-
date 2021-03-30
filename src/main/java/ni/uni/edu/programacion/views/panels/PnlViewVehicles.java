@@ -5,7 +5,6 @@
  */
 package ni.uni.edu.programacion.views.panels;
 
-
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -13,7 +12,7 @@ import javax.swing.JTextField;
 
 public class PnlViewVehicles extends javax.swing.JPanel {
 
-  
+    
      public JComboBox<String> getCmbBusqueda() {
         return cmbBusqueda;
     }
@@ -46,12 +45,7 @@ public class PnlViewVehicles extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         cmbBusqueda = new javax.swing.JComboBox<>();
         txtBusqueda = new javax.swing.JTextField();
-<<<<<<< Upstream, based on origin/master
-        btnBusqueda = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-=======
         jLabel2 = new javax.swing.JLabel();
->>>>>>> e44b8e5 Se Arreglaron Errores
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblTabla = new javax.swing.JTable();
@@ -69,9 +63,6 @@ public class PnlViewVehicles extends javax.swing.JPanel {
 
         jLabel2.setText("Press enter to search");
         jPanel1.add(jLabel2);
-
-        jLabel1.setText("Presionar enter para filtrar");
-        jPanel1.add(jLabel1);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -109,10 +100,7 @@ public class PnlViewVehicles extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbBusqueda;
     private javax.swing.JLabel jLabel1;
-<<<<<<< Upstream, based on origin/master
-=======
     private javax.swing.JLabel jLabel2;
->>>>>>> e44b8e5 Se Arreglaron Errores
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
