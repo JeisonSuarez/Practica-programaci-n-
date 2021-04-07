@@ -39,7 +39,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-       @Override
+    @Override
     public void create(Vehicle t) throws IOException {
         
         getCustomRandom().getRafH().seek(0);
@@ -80,7 +80,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
     public Collection<Vehicle> getAll() throws IOException {
         List<Vehicle> vehicles = new ArrayList<>();
         Vehicle vehicle = null;
-        int contador=0;
+        
         getCustomRandom().getRafH().seek(0);
         int n = getCustomRandom().getRafH().readInt();        
         
@@ -99,13 +99,10 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
             
             vehicle = gson.fromJson(getCustomRandom().getRafD().readUTF(), Vehicle.class);
             
-            contador++;
             vehicles.add(vehicle);            
         }
         
         return vehicles;
     }
-    
-   
     
 }

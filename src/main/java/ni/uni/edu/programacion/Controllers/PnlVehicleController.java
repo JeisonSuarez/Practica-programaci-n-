@@ -5,6 +5,10 @@
  */
 package ni.uni.edu.programacion.Controllers;
 
+/**
+ *
+ * @author Sistemas-09
+ */
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -35,7 +39,6 @@ import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
 import ni.edu.uni.programacion.backend.pojo.VehicleSubModel;
 import ni.uni.edu.programacion.views.panels.PnlVehicle;
-import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
  *
@@ -44,7 +47,6 @@ import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 public class PnlVehicleController {
 
     private PnlVehicle pnlVehicle;
-    private PnlViewVehicles pnlViewVehicle ;
     private Gson gson;
     private List<VehicleSubModel> vehicleSubModels;
     private DefaultComboBoxModel cmbModelMake;
@@ -59,12 +61,8 @@ public class PnlVehicleController {
     
     public PnlVehicleController(PnlVehicle pnlVehicle) throws FileNotFoundException {
         this.pnlVehicle = pnlVehicle;
-        
         initComponent();
     }
-
-
-    
 
     private void initComponent() throws FileNotFoundException {
         gson = new Gson();
@@ -141,8 +139,6 @@ public class PnlVehicleController {
                 pnlVehicle.getTxtStock().setBorder(stockBorder);
             }
         });
-        
-       
     }
 
     private void btnSaveActionListener(ActionEvent e) throws IOException, Exception {
@@ -196,11 +192,8 @@ public class PnlVehicleController {
         }
 
         pnlVehicle.getTxtImage().setText(file.getPath());
-        
 
     }
-    
-     
 
     private void vehicleValidation(Vehicle v) throws Exception {
         if (v.getStockNumber() <= 0) {
