@@ -90,7 +90,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
          
          id=t.getStockNumber();
          close();
-       return id;
+       return id;//prueba commit 
     }
 
     @Override
