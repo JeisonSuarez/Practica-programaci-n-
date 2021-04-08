@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import ni.edu.uni.programacion.backend.dao.VehicleDao;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
+import ni.edu.uni.programacion.utils.SearchAlgorithms;
 
 /**
  *
@@ -22,6 +23,7 @@ import ni.edu.uni.programacion.backend.pojo.Vehicle;
 public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
     private final int SIZE = 800;    
     private Gson gson;    
+    
     
     public JsonVehicleDaoImpl() throws FileNotFoundException {
         super(new File("vehicleJson.head"), new File("vehicleJson.dat"));        
@@ -68,7 +70,27 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
 
     @Override
     public int update(Vehicle t) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       int id=0;
+       if (t==null){
+        return id;
+    }
+       getCustomRandom().getRafH().seek(0);
+       int n=getCustomRandom().getRafH().readInt();
+       if(n==0){
+           return id;
+       }
+       int pos =SearchAlgorithms.randomBinarySearch(getCustomRandom().getRafH(),t.getStockNumber(),0,n-1);
+       
+       if(pos<0){
+           return id;
+       }
+       getCustomRandom().getRafD().seek(0);//aqui va la posicion en que esta guardada en el data
+       
+         getCustomRandom().getRafD().writeUTF(gson.toJson(t));
+         
+         id=t.getStockNumber();
+         close();
+       return id;
     }
 
     @Override
