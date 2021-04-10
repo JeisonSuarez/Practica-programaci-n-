@@ -10,6 +10,7 @@ package ni.uni.edu.programacion.views;
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class FrmVehicleApp extends javax.swing.JFrame {
+    jdVehicles jdV;
 
     /**
      * Creates new form FrmVehicleApp
@@ -42,6 +43,10 @@ public class FrmVehicleApp extends javax.swing.JFrame {
         mniExit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vehicle App");
+        setBackground(new java.awt.Color(0, 153, 153));
+
+        jDesktopPane1.setBackground(new java.awt.Color(0, 102, 102));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -56,22 +61,44 @@ public class FrmVehicleApp extends javax.swing.JFrame {
 
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
 
+        jMenuBar1.setBackground(new java.awt.Color(0, 255, 255));
+        jMenuBar1.setForeground(new java.awt.Color(0, 102, 102));
+
+        mnOptions.setBackground(new java.awt.Color(0, 153, 153));
+        mnOptions.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
         mnOptions.setText("Options");
+        mnOptions.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         mniNew.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mniNew.setBackground(new java.awt.Color(0, 204, 204));
         mniNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/new-register.png"))); // NOI18N
         mniNew.setText("New");
+        mniNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniNewActionPerformed(evt);
+            }
+        });
         mnOptions.add(mniNew);
 
         mniView.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mniView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/view-vehicles.png"))); // NOI18N
         mniView.setText("View");
+        mniView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniViewActionPerformed(evt);
+            }
+        });
         mnOptions.add(mniView);
         mnOptions.add(jSeparator1);
 
         mniExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_DOWN_MASK));
         mniExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit window.png"))); // NOI18N
         mniExit.setText("Exit");
+        mniExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniExitActionPerformed(evt);
+            }
+        });
         mnOptions.add(mniExit);
 
         jMenuBar1.add(mnOptions);
@@ -81,7 +108,23 @@ public class FrmVehicleApp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
+    private void mniNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNewActionPerformed
+        jdV=new jdVehicles(new javax.swing.JFrame(), true);
+        jdV.setVisible(true);
+    }//GEN-LAST:event_mniNewActionPerformed
+
+    private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
+        System.exit(WIDTH);
+    }//GEN-LAST:event_mniExitActionPerformed
+
+    private void mniViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewActionPerformed
+       InternalFrmViewVehicles frmvv=new InternalFrmViewVehicles();
+       
+       jDesktopPane1.add(frmvv);
+       frmvv.show();
+    }//GEN-LAST:event_mniViewActionPerformed
+
+/**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
