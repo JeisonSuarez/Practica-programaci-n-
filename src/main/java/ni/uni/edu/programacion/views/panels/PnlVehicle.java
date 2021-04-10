@@ -157,6 +157,11 @@ public class PnlVehicle extends javax.swing.JPanel {
         btnCancel.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 0, 51));
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnCancel);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
@@ -436,6 +441,10 @@ public class PnlVehicle extends javax.swing.JPanel {
 
         add(jPanel2, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+       System.exit(WIDTH);    
+    }//GEN-LAST:event_btnCancelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

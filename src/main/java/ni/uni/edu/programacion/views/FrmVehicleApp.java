@@ -5,12 +5,16 @@
  */
 package ni.uni.edu.programacion.views;
 
+import ni.uni.edu.programacion.views.panels.PnlViewVehicle;
+
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class FrmVehicleApp extends javax.swing.JFrame {
-    jdVehicles jdV;
+    private jdVehicles jdV;
+    private InternalFrmViewVehicles frmvv;
+     private PnlViewVehicle pnlViewVehicle;
 
     /**
      * Creates new form FrmVehicleApp
@@ -114,11 +118,12 @@ public class FrmVehicleApp extends javax.swing.JFrame {
     }//GEN-LAST:event_mniNewActionPerformed
 
     private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
-        System.exit(WIDTH);
+        
     }//GEN-LAST:event_mniExitActionPerformed
 
     private void mniViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewActionPerformed
-       InternalFrmViewVehicles frmvv=new InternalFrmViewVehicles();
+        frmvv=new InternalFrmViewVehicles();
+        frmvv.add(pnlViewVehicle);
        
        jDesktopPane1.add(frmvv);
        frmvv.show();

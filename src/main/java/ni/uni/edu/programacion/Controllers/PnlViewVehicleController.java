@@ -12,9 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
@@ -23,7 +21,8 @@ import ni.uni.edu.programacion.views.panels.PnlViewVehicle;
 
 /**
  *
- * @author Sistemas-05
+ * @author Jeison Suarez
+ * 
  */
 public class PnlViewVehicleController {
 
@@ -73,20 +72,4 @@ public class PnlViewVehicleController {
         pnlViewVehicle.getTblViewVehicle().setModel(tblViewVehicleModel);
         pnlViewVehicle.getTblViewVehicle().setRowSorter(tblRowSorter);
     }
-
-//    private Object[][] getData() throws IOException {
-//        vehicles = jsonVehicleDaoImpl.getAll().stream().collect(Collectors.toList());
-//        if (vehicles == null || vehicles.isEmpty()) {
-//            return new Object[][]{null};
-//        }
-//
-//        Object[][] data = new Object[vehicles.size()][vehicles.get(0).asArray().length];
-//
-//        IntStream.range(0, vehicles.size()).forEach(i -> {
-//            data[i] = vehicles.get(i).asArray();
-//        });
-//
-//        return data;
-//    }
-
 }
