@@ -5,7 +5,10 @@
  */
 package ni.uni.edu.programacion.component.model;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
+import java.util.Observer;
 import javax.swing.table.AbstractTableModel;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
 
@@ -13,19 +16,22 @@ import ni.edu.uni.programacion.backend.pojo.Vehicle;
  *
  * @author Sistemas-05
  */
-public class VehicleTableModel extends AbstractTableModel {
-    private List<Vehicle> vehicles;
-    private String[] columnNames;
+public class VehicleTableModel extends AbstractTableModel implements PropertyChangeListener{
+    private List<Vehicle> data;
+    private final String[] columnNames;
 
-    public VehicleTableModel(List vehicles, String[] columnNames) {
-        this.vehicles = vehicles;
+    public VehicleTableModel(List<Vehicle> data, String[] columnNames) {
+        this.data = data;
         this.columnNames = columnNames;
     }
     
-    
+    public void add(Vehicle v){
+        this.data.add(v);
+    }
+        
     @Override
     public int getRowCount() {
-        return vehicles == null ? 0 : vehicles.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
@@ -35,7 +41,14 @@ public class VehicleTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return vehicles.get(rowIndex).asArray()[columnIndex];
+        return data == null ? null : data.isEmpty() ? null : data.get(rowIndex).asArray()[columnIndex];
     }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        add((Vehicle)evt.getNewValue());
+        fireTableDataChanged();
+    }
+    
     
 }

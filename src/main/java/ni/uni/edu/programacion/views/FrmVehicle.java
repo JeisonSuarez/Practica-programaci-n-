@@ -9,7 +9,8 @@ import javax.swing.JComponent;
 import ni.uni.edu.programacion.Controllers.PnlVehicleController;
 import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
 import ni.uni.edu.programacion.views.panels.PnlVehicle;
-import ni.uni.edu.programacion.views.panels.PnlViewVehicle;
+
+import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
  *
@@ -20,7 +21,7 @@ public class FrmVehicle extends javax.swing.JFrame {
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
 
-    private PnlViewVehicle pnlViewVehicle;
+    private PnlViewVehicles pnlViewVehicle;
     private PnlViewVehicleController pnlViewVehicleController;
     /**
      * Creates new form FrmVehicle
@@ -92,22 +93,17 @@ public class FrmVehicle extends javax.swing.JFrame {
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
 
-        try {
-            if (pnlVehicle == null) {
-                pnlVehicle = new PnlVehicle();
-                pnlVehicleController = new PnlVehicleController(pnlVehicle);
-            }
-            
-            addComponent(pnlVehicle);
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FrmVehicle.class.getName()).log(Level.SEVERE, null, ex);
+        if (pnlVehicle == null) {
+            pnlVehicle = new PnlVehicle();
+            pnlVehicleController = new PnlVehicleController(pnlVehicle);
         }
+        addComponent(pnlVehicle);
 
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         if(pnlViewVehicle == null){
-            pnlViewVehicle = new PnlViewVehicle();
+            pnlViewVehicle = new PnlViewVehicles();
             pnlViewVehicleController = new PnlViewVehicleController(pnlViewVehicle);
         }
         

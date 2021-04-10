@@ -5,16 +5,17 @@
  */
 package ni.uni.edu.programacion.views;
 
-import ni.uni.edu.programacion.views.panels.PnlViewVehicle;
+import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
+import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
  *
  * @author Sammy Guergachi <sguergachi at gmail.com>
  */
 public class FrmVehicleApp extends javax.swing.JFrame {
-    private jdVehicles jdV;
-    private InternalFrmViewVehicles frmvv;
-     private PnlViewVehicle pnlViewVehicle;
+   
+    private PnlViewVehicleController pnlViewVehicleController;
+     private PnlViewVehicles pnlViewVehicle;
 
     /**
      * Creates new form FrmVehicleApp
@@ -23,10 +24,8 @@ public class FrmVehicleApp extends javax.swing.JFrame {
         
      
         initComponents();
-        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
-       int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
-       this.setBounds((ancho / 2) - (this.getWidth() / 2), (alto / 2) - (this.getHeight() / 2), 600, 600);
-       this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -56,11 +55,11 @@ public class FrmVehicleApp extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 729, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 530, Short.MAX_VALUE)
         );
 
         getContentPane().add(jDesktopPane1, java.awt.BorderLayout.CENTER);
@@ -113,17 +112,18 @@ public class FrmVehicleApp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mniNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNewActionPerformed
-        jdV=new jdVehicles(new javax.swing.JFrame(), true);
+        jdVehicles jdV = new jdVehicles(null, true);
+        
         jdV.setVisible(true);
     }//GEN-LAST:event_mniNewActionPerformed
 
     private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
-        
+        System.exit(0);
     }//GEN-LAST:event_mniExitActionPerformed
 
     private void mniViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewActionPerformed
-        frmvv=new InternalFrmViewVehicles();
-        frmvv.add(pnlViewVehicle);
+       InternalFrmViewVehicles frmvv; frmvv=new InternalFrmViewVehicles();
+       
        
        jDesktopPane1.add(frmvv);
        frmvv.show();

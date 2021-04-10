@@ -6,40 +6,23 @@
 package ni.uni.edu.programacion.views;
 
 import java.awt.BorderLayout;
-import javax.swing.JComponent;
 import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
-import ni.uni.edu.programacion.views.panels.PnlViewVehicle;
+import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
  *
- * @author Javier Ramirez
+ * @author Sistemas-05
  */
 public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
-    private PnlViewVehicle pnlViewVehicle;
+    private PnlViewVehicles pnlViewVehicles;
     private PnlViewVehicleController pnlViewVehicleController;
+    
+    
     /**
-     * Creates new form FrmViewVehicles
+     * Creates new form IFrmVehicle
      */
     public InternalFrmViewVehicles() {
-        initComponents();
-        if(pnlViewVehicle == null){
-            pnlViewVehicle = new PnlViewVehicle();
-            pnlViewVehicleController = new PnlViewVehicleController(pnlViewVehicle);
-        }
-        
-        addComponent(pnlViewVehicle);
-        
-        
-        
-    }
-    
-    
-   private void addComponent(JComponent component) {
-        pnlContentTable.removeAll();        
-        pnlContentTable.add(component, BorderLayout.CENTER);
-        pnlContentTable.setVisible(true);
-        validate();
-        repaint();
+        initComponents();        
     }
 
     /**
@@ -51,61 +34,57 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        pnlContentTable = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        btnNew = new javax.swing.JButton();
+        btnUpdate = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
+        pnlContent = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(0, 204, 204));
-        setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153)));
         setClosable(true);
         setIconifiable(true);
-        setMaximizable(true);
-        setResizable(true);
-        setTitle("View Vehicles");
+        setTitle("Vehicles Catalog");
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton1.setForeground(new java.awt.Color(0, 153, 51));
-        jButton1.setText("New");
-        jPanel3.add(jButton1);
+        btnNew.setText("New");
+        btnNew.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNew);
 
-        jButton2.setForeground(new java.awt.Color(204, 204, 0));
-        jButton2.setText("Update");
-        jPanel3.add(jButton2);
+        btnUpdate.setText("Update");
+        jPanel1.add(btnUpdate);
 
-        jButton3.setForeground(new java.awt.Color(255, 0, 51));
-        jButton3.setText("Delete");
-        jPanel3.add(jButton3);
+        btnDelete.setText("Delete");
+        jPanel1.add(btnDelete);
 
-        getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
 
-        pnlContentTable.setBackground(new java.awt.Color(0, 204, 204));
+        pnlContent.setBackground(new java.awt.Color(255, 255, 255));
+        pnlContent.setLayout(new java.awt.BorderLayout());
+        pnlViewVehicles = new PnlViewVehicles();
+        pnlViewVehicleController = new PnlViewVehicleController(pnlViewVehicles);
 
-        javax.swing.GroupLayout pnlContentTableLayout = new javax.swing.GroupLayout(pnlContentTable);
-        pnlContentTable.setLayout(pnlContentTableLayout);
-        pnlContentTableLayout.setHorizontalGroup(
-            pnlContentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 497, Short.MAX_VALUE)
-        );
-        pnlContentTableLayout.setVerticalGroup(
-            pnlContentTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
-        );
+        pnlContent.add(pnlViewVehicles, BorderLayout.CENTER);
+        getContentPane().add(pnlContent, java.awt.BorderLayout.CENTER);
 
-        getContentPane().add(pnlContentTable, java.awt.BorderLayout.CENTER);
-
-        pack();
+        setBounds(0, 0, 845, 548);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+       jdVehicles jdV = new jdVehicles(null, true);
+        jdV.addPropertySupport(pnlViewVehicleController.getTblViewModel());
+        jdV.setVisible(true);
+    }//GEN-LAST:event_btnNewActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel pnlContentTable;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnNew;
+    private javax.swing.JButton btnUpdate;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel pnlContent;
     // End of variables declaration//GEN-END:variables
 }
