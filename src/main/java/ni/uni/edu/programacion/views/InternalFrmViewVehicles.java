@@ -6,7 +6,12 @@
 package ni.uni.edu.programacion.views;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
+import ni.uni.edu.programacion.component.model.VehicleTableModel;
+import ni.uni.edu.programacion.views.panels.PnlVehicle;
 import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
@@ -14,15 +19,16 @@ import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
  * @author Sistemas-05
  */
 public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
+
     private PnlViewVehicles pnlViewVehicles;
     private PnlViewVehicleController pnlViewVehicleController;
-    
-    
+    private VehicleTableModel tblViewModel;
+
     /**
      * Creates new form IFrmVehicle
      */
     public InternalFrmViewVehicles() {
-        initComponents();        
+        initComponents();
     }
 
     /**
@@ -58,6 +64,11 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
         jPanel1.add(btnUpdate);
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnDelete);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.SOUTH);
@@ -74,10 +85,25 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-       jdVehicles jdV = new jdVehicles(null, true);
+        jdVehicles jdV = new jdVehicles(null, true);
         jdV.addPropertySupport(pnlViewVehicleController.getTblViewModel());
         jdV.setVisible(true);
     }//GEN-LAST:event_btnNewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        ActionListener accion = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (pnlViewVehicles.getTblViewVehicle().getSelectedRow() ==-1){
+                    JOptionPane.showMessageDialog(null, "Debes seleccionar una fila.");
+                }
+                if (pnlViewVehicles.getTblViewVehicle().getSelectedRow() != -1) {
+                    tblViewModel.borrarFila(pnlViewVehicles.getTblViewVehicle().getSelectedRow());
+
+                }
+            }
+        };
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

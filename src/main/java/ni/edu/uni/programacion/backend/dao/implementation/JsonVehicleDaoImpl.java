@@ -84,18 +84,36 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
        if(pos<0){
            return id;
        }
-       getCustomRandom().getRafD().seek(0);//aqui va la posicion en que esta guardada en el data
-       
+       long posData = (t.getStockNumber()- 1) * SIZE;
+       getCustomRandom().getRafD().seek(posData);
          getCustomRandom().getRafD().writeUTF(gson.toJson(t));
          
          id=t.getStockNumber();
          close();
-       return id;//prueba commit 
+       return id;
     }
 
     @Override
     public boolean delete(Vehicle t) throws IOException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         int id = 0;
+        if(t == null){
+            return true;
+        }
+       getCustomRandom().getRafH().seek(0);
+       int n=getCustomRandom().getRafH().readInt();
+       if(n==0){
+           return true;
+       }  
+       int pos =SearchAlgorithms.randomBinarySearch(getCustomRandom().getRafH(),t.getStockNumber(),0,n-1);
+       
+       if(pos<0){
+           return true;
+       }
+        long posData = (t.getStockNumber()- 1) * SIZE;
+        getCustomRandom().getRafD().seek(posData);
+        id=t.getStockNumber();
+        close();
+       return true;
     }
 
     @Override

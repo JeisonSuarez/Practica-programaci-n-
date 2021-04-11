@@ -5,6 +5,8 @@
  */
 package ni.uni.edu.programacion.Controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
@@ -20,6 +22,7 @@ import javax.swing.table.TableRowSorter;
 import ni.edu.uni.programacion.backend.dao.implementation.JsonVehicleDaoImpl;
 import ni.edu.uni.programacion.backend.pojo.Vehicle;
 import ni.uni.edu.programacion.component.model.VehicleTableModel;
+import ni.uni.edu.programacion.views.InternalFrmViewVehicles;
 import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 
@@ -28,7 +31,6 @@ import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
  * @author Sistemas-05
  */
 public class PnlViewVehicleController {
-
     private final PnlViewVehicles pnlViewVehicles;
     private JsonVehicleDaoImpl jsonVehicleDaoImpl;
     private VehicleTableModel tblViewModel;
@@ -57,7 +59,10 @@ public class PnlViewVehicleController {
                 public void keyTyped(KeyEvent e) {
                     txtFinderKeyTyped(e);
                 }
+                
+           
             });
+            
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PnlViewVehicleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -80,7 +85,8 @@ public class PnlViewVehicleController {
         pnlViewVehicles.getTblViewVehicle().setModel(tblViewModel);
         pnlViewVehicles.getTblViewVehicle().setRowSorter(tblRowSorter);
     }
-
+    
+    
 //    private Object[][] getData() throws IOException {
 //        vehicles = jsonVehicleDaoImpl.getAll().stream().collect(Collectors.toList());
 //        Object data[][] = new Object[vehicles.size()][vehicles.get(0).asArray().length];

@@ -24,7 +24,7 @@ public class FrmVehicleApp extends javax.swing.JFrame {
         
      
         initComponents();
-        
+        this.setExtendedState(MAXIMIZED_BOTH);
         
     }
 
