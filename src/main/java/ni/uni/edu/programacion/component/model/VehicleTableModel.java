@@ -49,9 +49,9 @@ public class VehicleTableModel extends AbstractTableModel implements PropertyCha
         add((Vehicle)evt.getNewValue());
         fireTableDataChanged();
     }
-    public void borrarFila(int indice){
+        public void borrarFila(int indice){
             data.remove(indice);
-            this.fireTableRowsDeleted(indice, indice);
+            fireTableRowsDeleted(indice, indice);
     }
     
 }

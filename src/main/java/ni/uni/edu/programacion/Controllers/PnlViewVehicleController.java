@@ -53,7 +53,7 @@ public class PnlViewVehicleController {
             jsonVehicleDaoImpl = new JsonVehicleDaoImpl();
 
             loadTable();
-
+            
             pnlViewVehicles.getTxtFinder().addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyTyped(KeyEvent e) {
@@ -62,12 +62,19 @@ public class PnlViewVehicleController {
                 
            
             });
+         
             
-
+            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PnlViewVehicleController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(PnlViewVehicleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equalsIgnoreCase("Delete")){
+          tblViewModel.borrarFila(pnlViewVehicles.getTblViewVehicle().getSelectedRow());
+            
         }
     }
 

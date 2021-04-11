@@ -8,6 +8,7 @@ package ni.uni.edu.programacion.views;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
 import ni.uni.edu.programacion.component.model.VehicleTableModel;
@@ -91,19 +92,10 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        ActionListener accion = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (pnlViewVehicles.getTblViewVehicle().getSelectedRow() ==-1){
-                    JOptionPane.showMessageDialog(null, "Debes seleccionar una fila.");
-                }
-                if (pnlViewVehicles.getTblViewVehicle().getSelectedRow() != -1) {
-                    tblViewModel.borrarFila(pnlViewVehicles.getTblViewVehicle().getSelectedRow());
-
-                }
-            }
-        };
+      pnlViewVehicleController.actionPerformed(evt);
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
