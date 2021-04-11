@@ -92,7 +92,7 @@ public class JsonVehicleDaoImpl extends RandomTemplate implements VehicleDao{
          close();
        return id;
     }
-
+  
     @Override
     public boolean delete(Vehicle t) throws IOException {
          int id = 0;

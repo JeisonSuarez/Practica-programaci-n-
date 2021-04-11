@@ -7,8 +7,12 @@ package ni.uni.edu.programacion.views;
 
 import java.awt.BorderLayout;
 import java.beans.PropertyChangeListener;
+import javax.swing.JOptionPane;
+import ni.edu.uni.programacion.backend.pojo.Vehicle;
 import ni.uni.edu.programacion.Controllers.PnlVehicleController;
+import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
 import ni.uni.edu.programacion.views.panels.PnlVehicle;
+import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
 /**
  *
@@ -17,7 +21,8 @@ import ni.uni.edu.programacion.views.panels.PnlVehicle;
 public class jdVehicles extends javax.swing.JDialog {
     private PnlVehicle pnlVehicle;
     private PnlVehicleController pnlVehicleController;
-    
+    private PnlViewVehicles  pnlViewVehicles;
+    private PnlViewVehicleController pnlViewVehicleController;
     /**
      * Creates new form DlgVehicle
      */
@@ -25,7 +30,27 @@ public class jdVehicles extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
-
+    private int filaSeleccionada(){
+        pnlViewVehicleController= new PnlViewVehicleController(pnlViewVehicles);
+        int fila=pnlViewVehicles.getTblViewVehicle().getSelectedRow();
+        return fila;
+    }
+    public void validacion(){
+        if(filaSeleccionada()==-1){
+            JOptionPane.showMessageDialog(null, "Selecciona una fila");
+        }
+    }
+    public void cargarDatos(){
+        Vehicle v= (Vehicle)pnlViewVehicleController.getTblViewModel().getValueAt(pnlViewVehicles.getTblViewVehicle().getSelectedRow(), 0);
+        String stockNumber=String.valueOf(v.getStockNumber());
+        String.valueOf(v.getYear());
+        String make=(v.getMake());
+        
+        pnlVehicle.getTxtStock().setText(stockNumber);
+        
+        
+    }
+        
     public void addPropertySupport(PropertyChangeListener pcl){
         pnlVehicleController.addPropertyChangeListener(pcl);
     }

@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ni.edu.uni.programacion.utils;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-/**
- *
- * @author yasser.membreno
- */
+
 public class SearchAlgorithms {
 
     public static int randomBinarySearch(RandomAccessFile raf, int key, int low, int high) throws IOException {

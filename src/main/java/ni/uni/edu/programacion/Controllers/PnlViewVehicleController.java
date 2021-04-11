@@ -5,10 +5,13 @@
  */
 package ni.uni.edu.programacion.Controllers;
 
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -16,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -25,12 +29,12 @@ import ni.uni.edu.programacion.component.model.VehicleTableModel;
 import ni.uni.edu.programacion.views.InternalFrmViewVehicles;
 import ni.uni.edu.programacion.views.panels.PnlViewVehicles;
 
-
 /**
  *
  * @author Sistemas-05
  */
 public class PnlViewVehicleController {
+
     private final PnlViewVehicles pnlViewVehicles;
     private JsonVehicleDaoImpl jsonVehicleDaoImpl;
     private VehicleTableModel tblViewModel;
@@ -47,37 +51,44 @@ public class PnlViewVehicleController {
     public VehicleTableModel getTblViewModel() {
         return tblViewModel;
     }
-    
+
     private void initComponent() {
         try {
             jsonVehicleDaoImpl = new JsonVehicleDaoImpl();
 
             loadTable();
-            
+
             pnlViewVehicles.getTxtFinder().addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyTyped(KeyEvent e) {
                     txtFinderKeyTyped(e);
                 }
-                
-           
+
             });
-         
-            
-            
+
+           
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(PnlViewVehicleController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(PnlViewVehicleController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equalsIgnoreCase("Delete")){
-          tblViewModel.borrarFila(pnlViewVehicles.getTblViewVehicle().getSelectedRow());
+
+    public void actionPerformed(ActionEvent e) throws IOException {
+        if (e.getActionCommand().equalsIgnoreCase("Delete")) {
+            tblViewModel.borrarFila(pnlViewVehicles.getTblViewVehicle().getSelectedRow());
             
         }
+        
     }
-
+    public boolean borrarDedata() throws IOException{
+        
+        Vehicle v = (Vehicle) tblViewModel.getValueAt(pnlViewVehicles.getTblViewVehicle().getSelectedRow(), 0);
+      boolean  eliminado=jsonVehicleDaoImpl.delete(v);
+      return eliminado;
+    }
+        
     private void txtFinderKeyTyped(KeyEvent e) {
         RowFilter<VehicleTableModel, Object> rf = null;
         rf = RowFilter.regexFilter(pnlViewVehicles.getTxtFinder().getText(), 0, 1, 2, 3, 4, 5, 6, 7, 8);
@@ -92,8 +103,7 @@ public class PnlViewVehicleController {
         pnlViewVehicles.getTblViewVehicle().setModel(tblViewModel);
         pnlViewVehicles.getTblViewVehicle().setRowSorter(tblRowSorter);
     }
-    
-    
+
 //    private Object[][] getData() throws IOException {
 //        vehicles = jsonVehicleDaoImpl.getAll().stream().collect(Collectors.toList());
 //        Object data[][] = new Object[vehicles.size()][vehicles.get(0).asArray().length];

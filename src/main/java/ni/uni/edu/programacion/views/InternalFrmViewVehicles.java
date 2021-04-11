@@ -8,6 +8,9 @@ package ni.uni.edu.programacion.views;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import ni.uni.edu.programacion.Controllers.PnlViewVehicleController;
@@ -62,6 +65,11 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
         jPanel1.add(btnNew);
 
         btnUpdate.setText("Update");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnUpdate);
 
         btnDelete.setText("Delete");
@@ -92,8 +100,22 @@ public class InternalFrmViewVehicles extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-      pnlViewVehicleController.actionPerformed(evt);
+        try {
+            pnlViewVehicleController.actionPerformed(evt);
+            pnlViewVehicleController.borrarDedata();
+        } catch (IOException ex) {
+            Logger.getLogger(InternalFrmViewVehicles.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        
+        jdVehicles jdV = new jdVehicles(null, true);
+        jdV.addPropertySupport(pnlViewVehicleController.getTblViewModel());
+        jdV.setVisible(true);
+        jdV.validacion();
+        jdV.cargarDatos();
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     
 
