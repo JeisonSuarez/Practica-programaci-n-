@@ -41,6 +41,8 @@ public class Vehicle {
         this.status = status;
     }
 
+    
+
     public Vehicle(int stockNumber, int year, String make, String model, String style, String vin, String exteriorColor, String interiorColor, String miles, float price, Transmission transmission, String engine, String image, String status) {
         this.stockNumber = stockNumber;
         this.year = year;
