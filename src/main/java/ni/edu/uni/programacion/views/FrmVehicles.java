@@ -152,9 +152,7 @@ public class FrmVehicles extends javax.swing.JFrame {
             JasperPrint print = JasperFillManager.fillReport( fileName, null, collection);
             JasperViewer viewer = new JasperViewer(print);            
             viewer.setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(FrmVehicles.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JRException ex) {
+        } catch (IOException | JRException ex) {
             Logger.getLogger(FrmVehicles.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -197,6 +195,7 @@ public class FrmVehicles extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrmVehicles().setVisible(true);
             }
